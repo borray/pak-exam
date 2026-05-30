@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Editor } from './pages/Editor'
 import { ExamTaking } from './pages/ExamTaking'
@@ -7,7 +7,7 @@ import { Print } from './pages/Print'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/editor/:id" element={<Editor />} />
@@ -15,6 +15,6 @@ export default function App() {
         <Route path="/results/:id" element={<Results />} />
         <Route path="/print/:id" element={<Print />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
