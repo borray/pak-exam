@@ -47,12 +47,15 @@ export function Editor() {
   const { exams, loadAll, saveExam, getExam } = useExamStore()
   const [exam, setExam] = useState<Exam | null>(null)
   const [showAddMenu, setShowAddMenu] = useState(false)
+  const createdRef = useRef(false)
 
   useEffect(() => { loadAll() }, [loadAll])
 
   useEffect(() => {
-    if (!exams.length && id === 'new') return
+    // Создание нового экзамена — ровно один раз
     if (id === 'new') {
+      if (createdRef.current) return
+      createdRef.current = true
       const newExam = createNewExam(exams)
       saveExam(newExam)
       navigate(`/editor/${newExam.id}`, { replace: true })
@@ -61,8 +64,6 @@ export function Editor() {
     const found = getExam(id!)
     if (found) {
       setExam(found)
-    } else if (exams.length > 0) {
-      navigate('/', { replace: true })
     }
   }, [id, exams, getExam, saveExam, navigate])
 
