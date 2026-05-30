@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Pak.Views.MainWindow"
+        Width="980" Height="640"
+        MinWidth="760" MinHeight="480"
+        Background="#1a1a1a"
+        Title="ПАК — Программно-Аттестационный Комплекс">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="#111111" Padding="20,14">
+            <StackPanel Orientation="Horizontal" Spacing="14">
+                <TextBlock Text="ПАК" FontSize="26" FontWeight="Bold" Foreground="#f5f5f0"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="Программно-Аттестационный Комплекс" FontSize="13"
+                           Foreground="#888" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <Border DockPanel.Dock="Top" Background="#161616" Padding="20,12">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <Button x:Name="NewBtn" Content="+ Новый экзамен"
+                        Background="#f5f5f0" Foreground="#0a0a0a" Padding="16,8"/>
+                <Button x:Name="ImportBtn" Content="Импорт .pak.json"
+                        Background="Transparent" Foreground="#aaa" BorderBrush="#444"
+                        BorderThickness="1" Padding="16,8"/>
+            </StackPanel>
+        </Border>
+
+        <TextBlock x:Name="EmptyLabel" DockPanel.Dock="Top"
+                   Text="Экзаменов пока нет. Создайте новый или импортируйте файл."
+                   Foreground="#666" Margin="20,20" FontSize="14"/>
+
+        <ScrollViewer>
+            <ItemsControl x:Name="ExamList" Margin="20,4,20,20"/>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
