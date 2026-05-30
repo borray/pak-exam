@@ -9,6 +9,8 @@ echo ============================================
 echo.
 
 echo [1/3] Загружаю обновления с GitHub...
+rem Сбрасываем служебные изменения, которые мешают обновлению
+git checkout -- . 2>nul
 git pull
 if errorlevel 1 goto error
 
