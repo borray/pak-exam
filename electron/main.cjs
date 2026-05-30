@@ -1,6 +1,8 @@
 const { app, BrowserWindow, shell } = require('electron')
 const path = require('path')
-const isDev = !app.isPackaged
+// Режим разработки только если явно задана переменная ELECTRON_DEV=1.
+// В обычном запуске всегда грузим собранные файлы из dist/.
+const isDev = process.env.ELECTRON_DEV === '1'
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -20,7 +22,7 @@ function createWindow() {
     win.loadURL('http://localhost:5173')
     win.webContents.openDevTools()
   } else {
-    win.loadFile(path.join(__dirname, '../dist/index.html'))
+    win.loadFile(path.join(__dirname, '..', 'dist', 'index.html'))
   }
 
   // Открывать внешние ссылки в браузере, а не в Electron

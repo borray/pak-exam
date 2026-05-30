@@ -8,26 +8,24 @@ echo   Обновление программы ПАК
 echo ============================================
 echo.
 
-echo [1/4] Загружаю обновления с GitHub...
+echo [1/3] Загружаю обновления с GitHub...
 git pull
 if errorlevel 1 goto error
 
 echo.
-echo [2/4] Проверяю зависимости...
+echo [2/3] Проверяю зависимости...
 call npm install
 if errorlevel 1 goto error
 
 echo.
-echo [3/4] Собираю программу...
-call npm run electron:dir
+echo [3/3] Собираю программу...
+call npm run build
 if errorlevel 1 goto error
 
 echo.
-echo [4/4] Готово!
-echo.
 echo ============================================
 echo   Обновление завершено успешно!
-echo   Запускай программу через "Запустить ПАК"
+echo   Запускай через файл "Запустить ПАК"
 echo ============================================
 echo.
 pause
