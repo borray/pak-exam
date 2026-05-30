@@ -21,7 +21,8 @@
       "electron/**/*"
     ],
     "win": {
-      "target": "nsis"
+      "target": "portable",
+      "signingHashAlgorithms": null
     },
     "mac": {
       "target": "dmg"
