@@ -22,7 +22,7 @@
     ],
     "win": {
       "target": "portable",
-      "signingHashAlgorithms": null
+      "forceCodeSigning": false
     },
     "mac": {
       "target": "dmg"
