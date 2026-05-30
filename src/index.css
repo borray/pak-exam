@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Mono&display=swap');
+@import "tailwindcss";
+
+:root {
+  --ink: #0a0a0a;
+  --ink-light: #3a3a3a;
+  --ink-muted: #6b6b6b;
+  --paper: #ffffff;
+  --paper-warm: #fafaf8;
+  --border: #1a1a1a;
+  --border-light: #d0d0d0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #2a2a2a;
+  color: var(--ink);
+  font-family: 'PT Serif', serif;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-pt-serif {
+  font-family: 'PT Serif', serif;
+}
+
+.font-pt-mono {
+  font-family: 'PT Mono', monospace;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
