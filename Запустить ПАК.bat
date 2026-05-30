@@ -11,5 +11,6 @@ if not exist "dist\index.html" (
   exit /b 1
 )
 
-start "" "node_modules\electron\dist\electron.exe" .
+rem Запускаем Electron через его официальный путь — работает где бы он ни лежал
+node -e "require('child_process').spawn(require('electron'),['.'],{detached:true,stdio:'ignore'}).unref()"
 exit

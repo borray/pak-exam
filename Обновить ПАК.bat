@@ -8,19 +8,27 @@ echo   Обновление программы ПАК
 echo ============================================
 echo.
 
-echo [1/3] Загружаю обновления с GitHub...
+echo [1/4] Загружаю обновления с GitHub...
 rem Сбрасываем служебные изменения, которые мешают обновлению
 git checkout -- . 2>nul
 git pull
 if errorlevel 1 goto error
 
 echo.
-echo [2/3] Проверяю зависимости...
+echo [2/4] Проверяю зависимости...
 call npm install
 if errorlevel 1 goto error
 
 echo.
-echo [3/3] Собираю программу...
+echo [3/4] Проверяю движок Electron...
+if not exist "node_modules\electron\dist\electron.exe" (
+  echo   Движок не найден, доустанавливаю...
+  node "node_modules\electron\install.js"
+  if errorlevel 1 goto error
+)
+
+echo.
+echo [4/4] Собираю программу...
 call npm run build
 if errorlevel 1 goto error
 
