@@ -20,10 +20,17 @@ function createWindow() {
 
   if (isDev) {
     win.loadURL('http://localhost:5173')
-    win.webContents.openDevTools()
   } else {
     win.loadFile(path.join(__dirname, '..', 'dist', 'index.html'))
   }
+
+  // ВРЕМЕННО: открываем консоль для диагностики пустого экрана
+  win.webContents.openDevTools()
+
+  // Логируем ошибки загрузки в консоль
+  win.webContents.on('did-fail-load', (_e, code, desc, url) => {
+    console.error('Не загрузилось:', code, desc, url)
+  })
 
   // Открывать внешние ссылки в браузере, а не в Electron
   win.webContents.setWindowOpenHandler(({ url }) => {
